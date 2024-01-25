@@ -33,15 +33,25 @@ public:
 
 	virtual  FSavedMovePtr AllocateNewMove() override;
 };
-	
+
+	UPROPERTY(EditDefaultsOnly) float Sprint_MaxWalkSpeed;
+	UPROPERTY(EditDefaultsOnly) float Walk_MaxWalkSpeed;
 
 	bool Safe_bWantsToSprint;
+
+public:
+	USchmooveCharacterMovementComponent();
+
 
 public:
 	virtual FNetworkPredictionData_Client* GetPredictionData_Client() const override;
 protected:
 	virtual void UpdateFromCompressedFlags(uint8 Flags) override;
+	virtual void OnMovementUpdated(float DeltaSeconds, const FVector& OldLocation, const FVector& OldVelocity) override;
 
 public:
-	USchmooveCharacterMovementComponent();
+	UFUNCTION(BlueprintCallable) void SprintPressed();
+	UFUNCTION(BlueprintCallable) void SprintReleased();
+	
+	
 };

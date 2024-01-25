@@ -10,14 +10,20 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "SchmooveCharacterMovementComponent.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 //////////////////////////////////////////////////////////////////////////
 // ASchmooveCharacter
 
-ASchmooveCharacter::ASchmooveCharacter()
+ASchmooveCharacter::ASchmooveCharacter(const FObjectInitializer& ObjectInitializer)
+: Super(ObjectInitializer.SetDefaultSubobjectClass<USchmooveCharacterMovementComponent>(ACharacter::CharacterMovementComponentName))
 {
+
+	SchmooveCharacterMovementComponent = Cast<USchmooveCharacterMovementComponent>(GetCharacterMovement());
+
+	
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 		
