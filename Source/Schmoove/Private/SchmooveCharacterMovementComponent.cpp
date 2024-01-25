@@ -4,6 +4,10 @@
 
 #include "GameFramework/Character.h"
 
+
+
+
+
 bool USchmooveCharacterMovementComponent::FSavedMove_Schmoove::CanCombineWith(const FSavedMovePtr& NewMove,	ACharacter* InCharacter, float MaxDelta) const
 {
 	FSavedMove_Schmoove* NewSchmooveMove = static_cast<FSavedMove_Schmoove*>(NewMove.Get());
@@ -100,6 +104,9 @@ void USchmooveCharacterMovementComponent::OnMovementUpdated(float DeltaSeconds, 
 	}
 }
 
+
+
+
 void USchmooveCharacterMovementComponent::SprintPressed()
 {
 	Safe_bWantsToSprint = true;
@@ -110,6 +117,13 @@ void USchmooveCharacterMovementComponent::SprintReleased()
 	Safe_bWantsToSprint = false;
 }
 
+void USchmooveCharacterMovementComponent::CrouchPressed()
+{
+	bWantsToCrouch = !bWantsToCrouch;
+}
+
+
 USchmooveCharacterMovementComponent::USchmooveCharacterMovementComponent()
 {
+	NavAgentProps.bCanCrouch = true;
 }
