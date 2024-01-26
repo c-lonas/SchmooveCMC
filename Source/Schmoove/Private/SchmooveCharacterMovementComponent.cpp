@@ -1,7 +1,8 @@
 ﻿
 
 #include "SchmooveCharacterMovementComponent.h"
-
+#include "Schmoove.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Character.h"
 
 
